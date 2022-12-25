@@ -24,8 +24,10 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import AppNav from './AppNav';
 import AuthEmail from './AuthEmail';
 import Login from './Login';
+import MainPage from './MainPage';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -63,7 +65,7 @@ const App = () => {
   };
 
   return (
-    <Login/>
+    <AppNav/>
     //<AuthEmail/>
     // <SafeAreaView style={backgroundStyle}>
     //   <StatusBar

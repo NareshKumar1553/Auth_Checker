@@ -1,18 +1,27 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import React from 'react';
+import { View, Text,StyleSheet } from 'react-native';
 
-export default class Success extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
-  render() {
+const Success = () =>
+{
     return (
-      <View>
-        <Text> Success Login </Text>
-      </View>
+        <View style={styles.container}>
+            <Text style={styles.text}>Success</Text>
+        </View>
     );
-  }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+    },
+    text: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+    },
+});
+
+export  default Success;

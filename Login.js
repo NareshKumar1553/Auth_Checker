@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -8,22 +8,24 @@ import {
   Button,
   TouchableOpacity,
   StatusBar,
+  Alert,
 } from "react-native";
+
 
 import auth from '@react-native-firebase/auth';
 import SplashScreen from "react-native-splash-screen";
-export default function Login() {
+const Login = ({navigation}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [Cpassword, setCPassword] = useState("");
-
-  useState(() => {
+  useEffect(() => {
     SplashScreen.hide();
   }, []);
+  
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={{uri:"https://i.pinimg.com/236x/cb/e2/eb/cbe2eb7eb0cac5b5d6c814b306f55201.jpg"}} /> 
-      <StatusBar style="auto" />
+      {/* <Image style={styles.image} source={{uri:"https://i.pinimg.com/236x/cb/e2/eb/cbe2eb7eb0cac5b5d6c814b306f55201.jpg"}} /> 
+      <StatusBar style="auto" /> */}
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -63,15 +65,18 @@ export default function Login() {
           auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
-        console.log('User account created & signed in!');
-        this.props.navigation.navigate('Suceess');
+        Alert.alert("Account Created Successfully");
+        navigation.push('Success');
+        console.log('User account created & signed in!');    
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
+          Alert.alert("This Email is Already in Use...");
           console.log('That email address is already in use!');
         }
     
         if (error.code === 'auth/invalid-email') {
+          Alert.alert("This Email is Invalid...");
           console.log('That email address is invalid!');
         }
     
@@ -125,3 +130,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#FF1493",
   },
 });
+
+export default Login;
