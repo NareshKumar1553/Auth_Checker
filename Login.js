@@ -9,11 +9,17 @@ import {
   TouchableOpacity,
   StatusBar,
 } from "react-native";
+
 import auth from '@react-native-firebase/auth';
+import SplashScreen from "react-native-splash-screen";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [Cpassword, setCPassword] = useState("");
+
+  useState(() => {
+    SplashScreen.hide();
+  }, []);
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={{uri:"https://i.pinimg.com/236x/cb/e2/eb/cbe2eb7eb0cac5b5d6c814b306f55201.jpg"}} /> 
